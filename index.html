@@ -9,34 +9,45 @@
 :root{--bg1:#0a0a1a; --bg2:#1a1a3a; --blue:#00d4ff; --purple:#a855f7;}
 body{background:linear-gradient(135deg,var(--bg1),var(--bg2));color:#fff;font-family:'Poppins',sans-serif;min-height:100vh;text-align:center}
 .logo{font-size:36px;font-weight:700;background:linear-gradient(90deg,var(--blue),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;padding:30px}
-.container{max-width:750px;margin:20px auto;background:rgba(21,21,42,0.8);padding:30px;border-radius:20px}
+.subtitle{font-family:'Noto Nastaliq Urdu',serif;font-size:20px;color:#ccc}
+.container{max-width:750px;margin:20px auto;background:rgba(21,21,42,0.8);padding:30px;border-radius:20px;border:1px solid #333}
 textarea{width:100%;height:120px;background:#0a0a1a;border:2px solid #333;color:#fff;padding:18px;border-radius:12px;font-size:16px}
 .btn{width:100%;padding:18px;background:linear-gradient(90deg,var(--blue),var(--purple));border:none;color:#fff;font-size:20px;font-weight:700;border-radius:14px;cursor:pointer;margin-top:15px}
 #result img{width:100%;border-radius:15px;margin-top:15px;border:2px solid var(--blue)}
+.loader{border:5px solid #333;border-top:5px solid var(--blue);border-radius:50%;width:50px;height:50px;animation:spin 1s linear infinite;margin:20px auto}
+@keyframes spin {0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); }}
 </style>
 </head>
 <body>
-<div class="logo">🤖 رضوان اے RIZWAN AI</div>
+<div class="logo">🤖 رضوان اے</div>
+<div class="subtitle">RIZWAN AI</div>
 <div class="container">
   <h2>HD Image Generator</h2>
-  <p style="font-family:'Noto Nastaliq Urdu';color:#aaa">جو لکھو گے HD امیج بنے گی</p>
-  <textarea id="prompt" placeholder="مثال: beautiful Pakistani landscape"></textarea>
+  <p style="font-family:'Noto Nastaliq Urdu';color:#aaa">ایچ ڈی امیج بنے گی جو لکھو گے</p>
+  <textarea id="prompt" placeholder="مثال: mountains in pakistan"></textarea>
   <button class="btn" onclick="makeImage()">🖼️ Generate HD Image</button>
   <div id="result"><p style="margin-top:15px;color:#888">آپ کی امیج یہاں آئے گی</p></div>
 </div>
 
 <script>
-function makeImage(){
+async function makeImage(){
   let p = document.getElementById('prompt').value;
   if(p==""){alert("پہلے پرامپٹ لکھیں"); return;}
-  document.getElementById('result').innerHTML = '<p style="color:#00d4ff">امیج بن رہی ہے...</p>';
+  document.getElementById('result').innerHTML = '<div class="loader"></div><p style="color:#00d4ff">HD امیج بن رہی ہے...</p>';
   
-  // یہ Unsplash + AI کا کمبو ہے۔ 100% چلے گا
-  let imgUrl = `https://source.unsplash.com/1024x576/?` + encodeURIComponent(p);
+  // 2 API کا کمبو۔ ایک نہ چلے تو دوسرا
+  let url1 = `https://image.pollinations.ai/prompt/${encodeURIComponent(p + ", 8k, highly detailed")}?width=1024&height=576&nologo=true`;
+  let url2 = `https://source.unsplash.com/1024x576/?` + encodeURIComponent(p);
   
-  setTimeout(() => {
-    document.getElementById('result').innerHTML = `<p style="color:#00ff88">✅ HD امیج تیار ہے!</p><img src="${imgUrl}"><p style="color:#aaa;font-size:12px;margin-top:10px">نوٹ: اصلی AI ویڈیو کے لیے API Key چاہیے</p>`;
-  }, 3000);
+  let img = new Image();
+  img.onload = function(){
+    document.getElementById('result').innerHTML = `<p style="color:#00ff88">✅ HD امیج تیار ہے!</p><img src="${url1}">`;
+  }
+  img.onerror = function(){
+    // اگر پہلی فیل ہو جائے تو دوسری ٹرائی
+    document.getElementById('result').innerHTML = `<p style="color:#00ff88">✅ HD امیج تیار ہے!</p><img src="${url2}">`;
+  }
+  img.src = url1;
 }
 </script>
 </body>
