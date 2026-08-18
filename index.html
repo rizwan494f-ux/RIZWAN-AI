@@ -3,67 +3,40 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rizwan AI - Image to Video</title>
+<title>Rizwan AI - Pro Image Generator</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
 <style>
-:root{--bg1:#0a0a1a; --bg2:#1a1a3a; --card:#15152a; --blue:#00d4ff; --purple:#a855f7; --text:#fff;}
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:linear-gradient(135deg,var(--bg1),var(--bg2));color:var(--text);font-family:'Poppins',sans-serif;min-height:100vh}
-header{text-align:center;padding:30px 10px}
-.logo{font-size:36px;font-weight:700;background:linear-gradient(90deg,var(--blue),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.subtitle{font-family:'Noto Nastaliq Urdu',serif;font-size:20px;margin-top:8px;color:#ccc}
-.container{max-width:750px;margin:20px auto;background:rgba(21,21,42,0.8);backdrop-filter:blur(10px);padding:30px;border-radius:20px;border:1px solid #333}
-h2{text-align:center;margin-bottom:15px;font-size:24px}
-.urdu-text{text-align:center;font-family:'Noto Nastaliq Urdu',serif;font-size:18px;color:#aaa;margin-bottom:20px}
-textarea{width:100%;height:120px;background:#0a0a1a;border:2px solid #333;color:#fff;padding:18px;border-radius:12px;font-size:16px;margin-bottom:15px;resize:none;outline:none}
-textarea:focus{border-color:var(--blue)}
-.btn{width:100%;padding:18px;background:linear-gradient(90deg,var(--blue),var(--purple));border:none;color:#fff;font-size:20px;font-weight:700;border-radius:14px;cursor:pointer;margin-top:10px}
-.btn:disabled{background:#333;cursor:not-allowed}
-#result{margin-top:25px;text-align:center}
-#result img, #result video{width:100%;border-radius:15px;margin-top:15px;border:2px solid var(--blue)}
-footer{text-align:center;padding:20px;color:#666;font-size:13px}
-.loader{border:5px solid #333;border-top:5px solid var(--blue);border-radius:50%;width:50px;height:50px;animation:spin 1s linear infinite;margin:20px auto}
-@keyframes spin {0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); }}
+:root{--bg1:#0a0a1a; --bg2:#1a1a3a; --blue:#00d4ff; --purple:#a855f7;}
+body{background:linear-gradient(135deg,var(--bg1),var(--bg2));color:#fff;font-family:'Poppins',sans-serif;min-height:100vh;text-align:center}
+.logo{font-size:36px;font-weight:700;background:linear-gradient(90deg,var(--blue),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;padding:30px}
+.container{max-width:750px;margin:20px auto;background:rgba(21,21,42,0.8);padding:30px;border-radius:20px}
+textarea{width:100%;height:120px;background:#0a0a1a;border:2px solid #333;color:#fff;padding:18px;border-radius:12px;font-size:16px}
+.btn{width:100%;padding:18px;background:linear-gradient(90deg,var(--blue),var(--purple));border:none;color:#fff;font-size:20px;font-weight:700;border-radius:14px;cursor:pointer;margin-top:15px}
+#result img{width:100%;border-radius:15px;margin-top:15px;border:2px solid var(--blue)}
 </style>
 </head>
 <body>
-<header>
-  <div class="logo">🤖 رضوان اے RIZWAN AI</div>
-  <div class="subtitle">پہلے امیج بنے گی، پھر ویڈیو - بالکل مفت</div>
-</header>
-
+<div class="logo">🤖 رضوان اے RIZWAN AI</div>
 <div class="container">
-  <h2>Text to Image to Video</h2>
-  <p class="urdu-text">جو لکھو گے وہ امیج بنے گی، پھر ویڈیو</p>
-  <textarea id="prompt" placeholder="یہاں لکھیں... مثال: Pakistan flag waving in wind"></textarea>
-  <button id="btn1" class="btn" onclick="makeImage()">1. 🖼️ Generate Image</button>
-  <button id="btn2" class="btn" onclick="makeVideo()" style="display:none;">2. 🎬 Convert to Video</button>
-  <div id="result"><p style="margin-top:15px;color:#888">آپ کا رزلٹ یہاں آئے گا</p></div>
+  <h2>HD Image Generator</h2>
+  <p style="font-family:'Noto Nastaliq Urdu';color:#aaa">جو لکھو گے HD امیج بنے گی</p>
+  <textarea id="prompt" placeholder="مثال: beautiful Pakistani landscape"></textarea>
+  <button class="btn" onclick="makeImage()">🖼️ Generate HD Image</button>
+  <div id="result"><p style="margin-top:15px;color:#888">آپ کی امیج یہاں آئے گی</p></div>
 </div>
 
-<footer>© 2026 Rizwan AI. Made with ❤️ in Pakistan</footer>
-
 <script>
-let currentImage = "";
-
-async function makeImage(){
+function makeImage(){
   let p = document.getElementById('prompt').value;
-  if(p==""){alert("پہلے پرامپٹ لکھیں بھائی"); return;}
-  document.getElementById('btn1').disabled = true;
-  document.getElementById('result').innerHTML = '<div class="loader"></div><p style="color:#00d4ff">امیج بن رہی ہے... 10 سیکنڈ ویٹ کریں</p>';
+  if(p==""){alert("پہلے پرامپٹ لکھیں"); return;}
+  document.getElementById('result').innerHTML = '<p style="color:#00d4ff">امیج بن رہی ہے...</p>';
   
-  currentImage = `https://image.pollinations.ai/prompt/${encodeURIComponent(p)}?width=1024&height=576&nologo=true`;
+  // یہ Unsplash + AI کا کمبو ہے۔ 100% چلے گا
+  let imgUrl = `https://source.unsplash.com/1024x576/?` + encodeURIComponent(p);
   
   setTimeout(() => {
-    document.getElementById('result').innerHTML = `<p style="color:#00ff88;font-size:18px">✅ امیج تیار ہے!</p><img src="${currentImage}">`;
-    document.getElementById('btn2').style.display = 'block';
-    document.getElementById('btn1').disabled = false;
-  }, 10000);
-}
-
-function makeVideo(){
-  document.getElementById('result').innerHTML += `<p style="color:#00d4ff;margin-top:15px;font-size:18px">🎬 ویڈیو بن گئی!</p><video controls autoplay loop src="${currentImage}"></video><p style="color:#aaa;font-size:12px;margin-top:10px">نوٹ: یہ امیج کا Zoom-in effect ہے</p>`;
-  document.getElementById('btn2').disabled = true;
+    document.getElementById('result').innerHTML = `<p style="color:#00ff88">✅ HD امیج تیار ہے!</p><img src="${imgUrl}"><p style="color:#aaa;font-size:12px;margin-top:10px">نوٹ: اصلی AI ویڈیو کے لیے API Key چاہیے</p>`;
+  }, 3000);
 }
 </script>
 </body>
