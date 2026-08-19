@@ -1,49 +1,185 @@
 <!DOCTYPE html>
-<html lang="ur">
+<html lang="ur" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<title>Rizwan AI - 5s Video</title>
-<style>
-body{background:#050510;color:#fff;text-align:center;padding:20px}
-h1{background:linear-gradient(90deg,#00ff88,#00d4ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.box{max-width:600px;margin:20px auto;background:#101025;padding:25px;border-radius:20px}
-textarea{width:100%;height:70px;background:#000;border:2px solid #333;color:#fff;padding:15px;border-radius:12px}
-.btn{width:100%;padding:16px;background:#00ff88;border:none;color:#000;font-size:18px;font-weight:700;border-radius:12px;cursor:pointer}
-video{width:100%;border-radius:15px;margin-top:15px;border:3px solid #00ff88}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Rizwan Name Destiny | اپنے نام کا مطلب اور شخصیت جانیں</title>
+
+  <meta name="description" content="اپنے نام کا مطلب، شخصیت، پس منظر اور خوبصورت Destiny Card معلوم کریں۔">
+  <meta name="keywords" content="name meaning, نام کا مطلب, Urdu names, Rizwan Name Destiny">
+
+  <meta property="og:title" content="Rizwan Name Destiny">
+  <meta property="og:description" content="اپنے نام کا مطلب اور شخصیت جانیں۔">
+  <meta property="og:type" content="website">
+
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-<h1>🤖 رضوان اے - 5 سیکنڈ فری ویڈیو</h1>
-<p>لامحدود بنائیں۔ روز۔ بغیر پیسے کے</p>
 
-<div class="box">
-  <textarea id="p" placeholder="مثال: a man running in lahore, cinematic"></textarea>
-  <button id="btn" class="btn" onclick="make()">🎬 5 سیکنڈ ویڈیو بنائیں</button>
-  <div id="r"></div>
-  <p style="color:#ffaa00;font-size:12px">نوٹ: 2 منٹ میں بنے گی۔ کوئی لمٹ نہیں</p>
-</div>
+  <!-- Header -->
+  <header class="header">
+    <div class="logo">
+      ✨ Rizwan Name Destiny
+    </div>
 
-<script>
-async function make(){
-  let prompt = document.getElementById('p').value;
-  if(prompt==""){alert("پرامپٹ لکھیں"); return;}
-  document.getElementById('btn').disabled = true;
-  document.getElementById('r').innerHTML = '<p>بن رہی ہے... 120 سیکنڈ</p>';
-  
-  let res = await fetch("https://api-inference.huggingface.co/models/stabilityai/stable-video-diffusion-img2vid-xt", {
-    method: "POST", headers: {"Content-Type": "application/json"},
-    body: JSON.stringify({inputs: prompt + ", smooth motion, cinematic, 4k"})
-  });
-  let blob = await res.blob();
-  let url = URL.createObjectURL(blob);
-  
-  document.getElementById('r').innerHTML = `
-    <p style="color:#0f0">✅ ویڈیو تیار!</p>
-    <video controls autoplay loop src="${url}"></video>
-    <a href="${url}" download="RizwanAI-5s.mp4" class="btn" style="display:block;text-decoration:none">📥 Download</a>
-  `;
-  document.getElementById('btn').disabled = false;
-}
-</script>
+    <p>
+      اپنے نام کا مطلب اور شخصیت جانیں
+    </p>
+  </header>
+
+
+  <!-- Main -->
+  <main>
+
+    <section class="hero">
+
+      <h1>اپنے نام کی قسمت جانیں ✨</h1>
+
+      <p class="subtitle">
+        اپنا نام لکھیں اور چند سیکنڈ میں اس کا مطلب، شخصیت اور خاص پیغام دیکھیں۔
+      </p>
+
+      <!-- Search Box -->
+      <div class="search-box">
+
+        <input
+          type="text"
+          id="nameInput"
+          placeholder="مثلاً: علی، عائشہ، محمد"
+          autocomplete="off"
+        >
+
+        <button id="searchBtn">
+          🔍 نام تلاش کریں
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- Result -->
+    <section id="resultSection" class="result-section hidden">
+
+      <div id="destinyCard" class="destiny-card">
+
+        <div class="card-top">
+          <span>✨ Rizwan Name Destiny</span>
+        </div>
+
+        <h2 id="resultName">نام</h2>
+
+        <div class="result-item">
+          <div class="result-icon">📖</div>
+          <div>
+            <h3>نام کا مطلب</h3>
+            <p id="resultMeaning"></p>
+          </div>
+        </div>
+
+        <div class="result-item">
+          <div class="result-icon">🌟</div>
+          <div>
+            <h3>شخصیت</h3>
+            <p id="resultPersonality"></p>
+          </div>
+        </div>
+
+        <div class="result-item">
+          <div class="result-icon">📜</div>
+          <div>
+            <h3>پس منظر</h3>
+            <p id="resultBackground"></p>
+          </div>
+        </div>
+
+        <div class="result-item">
+          <div class="result-icon">💫</div>
+          <div>
+            <h3>آپ کے لیے خاص پیغام</h3>
+            <p id="resultMessage"></p>
+          </div>
+        </div>
+
+        <div class="watermark">
+          Made by Rizwan Name Destiny
+        </div>
+
+      </div>
+
+
+      <!-- Buttons -->
+      <div class="action-buttons">
+
+        <button id="downloadBtn" class="download-btn">
+          🖼️ تصویر محفوظ کریں
+        </button>
+
+        <button id="shareBtn" class="share-btn">
+          📤 شیئر کریں
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- Default Information -->
+    <section class="info-section">
+
+      <h2>🌟 Rizwan Name Destiny کیا ہے؟</h2>
+
+      <p>
+        یہاں آپ اپنے نام کا مطلب، شخصیت، نام کا پس منظر اور
+        ایک خوبصورت خصوصی پیغام دیکھ سکتے ہیں۔
+      </p>
+
+      <div class="features">
+
+        <div class="feature">
+          <span>📖</span>
+          <h3>نام کا مطلب</h3>
+          <p>اپنے نام کا خوبصورت مطلب جانیں۔</p>
+        </div>
+
+        <div class="feature">
+          <span>🌟</span>
+          <h3>شخصیت</h3>
+          <p>نام سے متعلق شخصیت کی معلومات دیکھیں۔</p>
+        </div>
+
+        <div class="feature">
+          <span>🖼️</span>
+          <h3>Destiny Card</h3>
+          <p>اپنے نام کا خوبصورت کارڈ تصویر کی صورت میں محفوظ کریں۔</p>
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- Footer -->
+  <footer>
+
+    <p>
+      © 2026 Rizwan Name Destiny
+    </p>
+
+    <p>
+      Made with ❤️ for everyone
+    </p>
+
+  </footer>
+
+
+  <!-- JavaScript -->
+  <script src="names.js"></script>
+  <script src="script.js"></script>
+
 </body>
 </html>
