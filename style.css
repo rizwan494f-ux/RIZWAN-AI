@@ -1,0 +1,341 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, "Noto Nastaliq Urdu", sans-serif;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  min-height: 100vh;
+  color: #222;
+}
+
+/* Header */
+
+.header {
+  text-align: center;
+  color: white;
+  padding: 35px 15px 25px;
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.header p {
+  font-size: 16px;
+  opacity: 0.95;
+}
+
+
+/* Main */
+
+main {
+  width: 100%;
+  max-width: 900px;
+  margin: auto;
+  padding: 10px 15px 40px;
+}
+
+
+/* Hero */
+
+.hero {
+  text-align: center;
+  color: white;
+  padding: 25px 10px 35px;
+}
+
+.hero h1 {
+  font-size: 34px;
+  margin-bottom: 15px;
+}
+
+.subtitle {
+  font-size: 17px;
+  line-height: 1.8;
+  margin-bottom: 25px;
+}
+
+
+/* Search */
+
+.search-box {
+  display: flex;
+  max-width: 650px;
+  margin: auto;
+  background: white;
+  padding: 7px;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.search-box input {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 16px;
+  font-size: 17px;
+  border-radius: 14px;
+  text-align: right;
+}
+
+.search-box button {
+  border: none;
+  background: #6c5ce7;
+  color: white;
+  padding: 0 22px;
+  border-radius: 14px;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.search-box button:hover {
+  background: #5848d6;
+}
+
+
+/* Result */
+
+.result-section {
+  margin-top: 20px;
+}
+
+.hidden {
+  display: none;
+}
+
+
+/* Destiny Card */
+
+.destiny-card {
+  background: linear-gradient(145deg, #ffffff, #f4f1ff);
+  border-radius: 25px;
+  padding: 30px 25px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+  position: relative;
+  overflow: hidden;
+}
+
+.card-top {
+  text-align: center;
+  color: #6c5ce7;
+  font-size: 15px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.destiny-card h2 {
+  text-align: center;
+  font-size: 38px;
+  color: #5b42d6;
+  margin-bottom: 25px;
+}
+
+
+/* Result Items */
+
+.result-item {
+  display: flex;
+  gap: 15px;
+  align-items: flex-start;
+  background: white;
+  padding: 16px;
+  margin-bottom: 14px;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+}
+
+.result-icon {
+  font-size: 28px;
+  min-width: 38px;
+}
+
+.result-item h3 {
+  color: #5b42d6;
+  margin-bottom: 7px;
+  font-size: 18px;
+}
+
+.result-item p {
+  font-size: 16px;
+  line-height: 1.9;
+  color: #444;
+}
+
+
+/* Watermark */
+
+.watermark {
+  text-align: center;
+  margin-top: 22px;
+  color: #777;
+  font-size: 13px;
+}
+
+
+/* Buttons */
+
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 18px;
+  flex-wrap: wrap;
+}
+
+.action-buttons button {
+  border: none;
+  padding: 14px 22px;
+  border-radius: 14px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.download-btn {
+  background: #00a86b;
+}
+
+.download-btn:hover {
+  background: #008c59;
+}
+
+.share-btn {
+  background: #25d366;
+}
+
+.share-btn:hover {
+  background: #1db954;
+}
+
+
+/* Information Section */
+
+.info-section {
+  background: rgba(255,255,255,0.96);
+  margin-top: 35px;
+  padding: 30px 20px;
+  border-radius: 25px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.info-section h2 {
+  color: #5b42d6;
+  margin-bottom: 15px;
+}
+
+.info-section > p {
+  line-height: 1.9;
+  color: #555;
+  margin-bottom: 25px;
+}
+
+
+/* Features */
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.feature {
+  background: #f6f3ff;
+  padding: 20px 12px;
+  border-radius: 18px;
+}
+
+.feature span {
+  font-size: 35px;
+}
+
+.feature h3 {
+  margin: 10px 0;
+  color: #5b42d6;
+}
+
+.feature p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #555;
+}
+
+
+/* Footer */
+
+footer {
+  text-align: center;
+  color: white;
+  padding: 25px 10px;
+  line-height: 2;
+  font-size: 14px;
+}
+
+
+/* Mobile */
+
+@media (max-width: 650px) {
+
+  .logo {
+    font-size: 23px;
+  }
+
+  .hero h1 {
+    font-size: 27px;
+  }
+
+  .subtitle {
+    font-size: 15px;
+  }
+
+  .search-box {
+    flex-direction: column;
+    gap: 8px;
+    padding: 8px;
+  }
+
+  .search-box input {
+    width: 100%;
+    padding: 15px;
+  }
+
+  .search-box button {
+    width: 100%;
+    padding: 15px;
+  }
+
+  .destiny-card {
+    padding: 25px 15px;
+  }
+
+  .destiny-card h2 {
+    font-size: 31px;
+  }
+
+  .result-item {
+    padding: 13px;
+  }
+
+  .result-item p {
+    font-size: 15px;
+  }
+
+  .features {
+    grid-template-columns: 1fr;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+  }
+
+  .action-buttons button {
+    width: 100%;
+  }
+}
